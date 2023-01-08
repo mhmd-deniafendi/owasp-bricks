@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                println 'hello world from Test stage'
+                println 'hello world from Test stage...'
             }
         }
         stage('Deploy') { 
