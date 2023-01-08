@@ -11,7 +11,7 @@ pipeline {
         stage('Test') { 
             steps {
                 sh '''
-                    docker compose version
+                    docker compose -v
                 '''
             }
         }
