@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any 
     stages {
@@ -8,7 +10,10 @@ pipeline {
         }
         stage('Test') { 
             steps {
-                println 'hello world from Test stage...'
+                sh '''
+                    docker --version
+                    docker compose version
+                '''
             }
         }
         stage('Deploy') { 
