@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                println 'hello world from Build stage'
+                println 'hello world from Build stage...'
             }
         }
         stage('Test') { 
@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                println 'hello world from Deploy stage'
+                println 'hello world from Deploy stage...'
             }
         }
     }
