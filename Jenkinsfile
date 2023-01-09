@@ -12,35 +12,35 @@
 
 pipeline {
     agent any
+    
     environment {
         REGISTRY_AUTH = credentials("dockerhub")
         REGISTRY_ADDRESS = "https://hub.docker.com/"
         COMPOSE_FILE = "docker-compose.yml"
     }
     stages {
-        stage('Build container'){
+        stage('Build') { 
             steps {
-                println "Build docker image...."                
+                println "Build container image"
                 sh '''
-                docker compose build
+                    docker compose build
                 '''
             }
         }
-    }
-    stages {
-        stage('Running container'){
-            steps{
-                println "Running container...."
+        stage('Running Container') { 
+            steps {
+                println "Running container Image"
                 sh '''
-                docker compose up -d
+                    docker compose up -d
                 '''
             }
         }
-    }
-    stages {
-        stage('Envinronment check'){
-            steps{
-                sh script "docker ps -a"
+        stage('Environment check') { 
+            steps {
+                println 'hello world from Deploy stage'
+                sh '''
+                    docker ps -a
+                '''
             }
         }
     }
