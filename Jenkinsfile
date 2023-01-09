@@ -23,7 +23,7 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker compose build
+                    docker compose -v
                 '''
             }
         }
@@ -31,7 +31,7 @@ pipeline {
             steps {
                 println "Running container Image"
                 sh '''
-                    docker compose up -d
+                    docker compose version
                 '''
             }
         }
