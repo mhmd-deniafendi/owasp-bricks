@@ -11,7 +11,6 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker version
                     docker compose version
                     docke-compose -v  
                 '''
