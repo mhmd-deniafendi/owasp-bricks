@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                     docker version
                     docker compose -v
-                    docker compose build   
+                    docker compose up -d  
                 '''
             }
         }
