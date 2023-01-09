@@ -3,43 +3,38 @@
 // def dockerRegistry = https://hub.docker.com/
 // def dockerTag = ${BUILD_ID}
 
-// Docker Host
-// def remote = [:]
-// remote.name = 'sc-playground-deni'
-// remote.host = '159.223.58.65'
-// remote.user = 'root'
-// remote.password = '1234@Solecode'
+
 
 pipeline {
     agent any
     
     environment {
-        REGISTRY_AUTH = credentials("dockerhub")
+        DOCKERHUB_CREDENTIALS = credentials("dockerhub")
         REGISTRY_ADDRESS = "https://hub.docker.com/"
         COMPOSE_FILE = "docker-compose.yml"
     }
     stages {
-        stage('Build') { 
+        stage('Build Image') { 
             steps {
                 println "Build container image"
                 sh '''
-                    docker compose build
+                    docker composer build   
                 '''
+                println "Build Completed"
             }
         }
-        stage('Running Container') { 
+        stage('Login to Registry') { 
             steps {
-                println "Running container Image"
-                sh '''
-                    docker compose up -d
-                '''
+                println "Trying to login to registry"
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                echo 'login completed'
             }
         }
         stage('Environment check') { 
             steps {
                 println 'hello world from Deploy stage'
                 sh '''
-                    docker ps -a
+                    docker image ls
                 '''
             }
         }
