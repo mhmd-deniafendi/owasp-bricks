@@ -1,10 +1,3 @@
-// Environmet Nginx
-// def appName_nginx = owasp-bricks-nginx
-// def dockerRegistry = https://hub.docker.com/
-// def dockerTag = ${BUILD_ID}
-
-
-
 pipeline {
     agent any
     
@@ -19,8 +12,8 @@ pipeline {
                 println "Build container image"
                 sh '''
                     docker version
-                    docker compose -v
-                    docker compose up -d  
+                    docker compose version
+                    docke-compose -v  
                 '''
             }
         }
