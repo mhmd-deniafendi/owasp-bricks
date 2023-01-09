@@ -23,7 +23,7 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker compose help
+                    docker compose --help
                 '''
             }
         }
