@@ -1,6 +1,7 @@
 version: "3.8"
 services:
   nginx:
+    image: nginx:alpine
     container_name: nginx
     build: ./nginx/
     command: nginx -g "daemon off;"
@@ -11,6 +12,7 @@ services:
     volumes:
       - ./:/var/www/html
   php:
+    image: php:fpm-alpine
     container_name: php
     build: ./php/
     ports:

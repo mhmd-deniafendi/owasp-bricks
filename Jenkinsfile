@@ -18,9 +18,10 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker composer build   
+                    docker version
+                    docker compose -v
+                    docker compose build   
                 '''
-                println "Build Completed"
             }
         }
         stage('Login to Registry') { 

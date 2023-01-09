@@ -1,3 +1,4 @@
-FROM nginx:1.23.3-alpine-slim
+FROM nginx:alpine
 RUN rm /etc/nginx/conf.d/default.conf
 COPY default.conf /etc/nginx/conf.d
+EXPOSE 80:80
