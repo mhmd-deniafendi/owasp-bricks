@@ -11,9 +11,7 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker version
-                    docker compose version
-                    docke-compose -v  
+                    docker compose build
                 '''
                 ehco 'Build Completed'
             }
@@ -27,7 +25,6 @@ pipeline {
         }
         stage('Environment check') { 
             steps {
-                println 'hello world from Deploy stage'
                 sh '''
                     docker image ls
                 '''
