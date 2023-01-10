@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKERHUB_CREDENTIALS = credentials("dockerhub")
+        DOCKERHUB_CREDENTIALS = credentials("Registry")
         REGISTRY_ADDRESS = "https://hub.docker.com/"
         COMPOSE_FILE = "docker-compose.yml"
     }
@@ -11,10 +11,9 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker version
-                    docker compose version
-                    docke-compose -v  
+                    docker compose build
                 '''
+                ehco 'Build Completed'
             }
         }
         stage('Login to Registry') { 
