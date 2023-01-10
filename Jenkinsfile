@@ -11,7 +11,9 @@ pipeline {
             steps {
                 println "Build container image"
                 sh '''
-                    docker compose build
+                    docker version
+                    docker compose version
+                    docke-compose -v  
                 '''
                 ehco 'Build Completed'
             }
